@@ -1,5 +1,7 @@
 #!/bin/bash -ex
 
+#https://github.com/foodcoops/foodsoft/archive/refs/heads/master.zip download from master 
+
 dl() {
     [ "$FAB_HTTP_PROXY" ] && PROXY="--proxy $FAB_HTTP_PROXY"
     cd $2; curl -L -f -O $PROXY $1; cd -
@@ -7,11 +9,9 @@ dl() {
 
 dlfs() {
     SRC=/usr/local/src
-    dl https://github.com/$1/archive/$2.tar.gz $SRC
-    VERSION=$(echo $2 | sed 's|^v||')
-    mv $SRC/$2.tar.gz $SRC/foodsoft-$3-$VERSION.tar.gz
+    dl https://github.com/foodcoops/foodsoft/archive/refs/heads/master.tar.gz $SRC
 }
 
-# download standart foodsoft
-dlfs foodcoops/foodsoft       v4.7.1        standard
+# download standard foodsoft
+dlfs foodcoops/foodsoft       master        standard
 

@@ -4,7 +4,7 @@ SRC=/usr/local/src
 WEBROOT=/var/www/foodsoft
 SECRET_KEY=turnkey1
 
-/etc/init.d/mysql start
+service mysql start
 
 # get rid of sample app but store database config
 mv $WEBROOT/config/database.yml /tmp/foodsoft_database.yml
@@ -12,9 +12,9 @@ rm -Rf $WEBROOT
 
 # extract application to webroot
 mkdir -p $WEBROOT
-tar -zxf /usr/local/src/foodsoft* --strip-components 1 -C $WEBROOT
+tar -zxf /usr/local/src/master* --strip-components 1 -C $WEBROOT
 
-rm -f /usr/local/src/foodsoft*
+rm -f /usr/local/src/master*
 
 # add database config 
 cp /tmp/foodsoft_database.yml $WEBROOT/config/database.yml
@@ -40,6 +40,8 @@ export SECRET_KEY_BASE=$SECRET_KEY
 
 # install dependencies
 [ "$FAB_HTTP_PROXY" ] && export HTTP_PROXY=$FAB_HTTP_PROXY
+
+echo "2.7.6" > /var/www/foodsoft/.ruby-version
 gem install bundler:1.15.4
 bundle install --without test development
 bundle exec rake foodsoft:setup:stock_config RAILS_ENV=production
@@ -65,5 +67,5 @@ chmod +x /root/.bashrc.d/foodsoft-secret
 # start foodsoft worker by default
 update-rc.d foodsoft-workers defaults
 
-/etc/init.d/mysql stop
+service mysql stop
 

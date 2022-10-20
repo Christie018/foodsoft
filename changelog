@@ -1,3 +1,23 @@
+turnkey-foodsoft-17.0 (1) turnkey; urgency=low
+
+  * Updating foodsoft appliance and dependencies to v17.0 with tkldev.
+
+  * Updating libqtwebkit-dev package to libqt5webkit5-dev update used in debian bullseye release.
+
+  * Changing how mysql service starts in conf.d/main file so it doesn't throw error during build.
+
+  * Downloading foodsoft source code from github master branch instead of latest update. 
+    Reflected foodsoft repository code changes in both conf.d/main and conf.d/downloads files.
+
+  * Bumping up ruby version used for appliance install to 2.7.6 in /var/www/foodsoft/.ruby-version file.
+
+  * Updating inithooks refactoring for dialog wrapper import used in foodsoft.py file.
+
+  * Note: Please refer to turnkey-core's changelog for changes common to all
+    appliances. Here we only describe changes specific to this appliance.
+
+ -- Mattie Darden <mattie@turnkeylinux.org>  Thu, 20 Oct 2022 16:25:57 -0400
+
 turnkey-foodsoft-16.1 (1) turnkey; urgency=low
 
   * Update Foodsoft to install latest version: 4.7.1

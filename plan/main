@@ -11,4 +11,4 @@ libmagick++-dev
 libmagickwand-dev
 
 libsqlite3-dev
-libqtwebkit-dev
+libqt5webkit5-dev

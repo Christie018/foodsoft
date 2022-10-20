@@ -15,8 +15,7 @@ import string
 import subprocess
 
 from subprocess import Popen, PIPE
-
-from dialog_wrapper import Dialog
+from libinithooks.dialog_wrapper import Dialog
 
 APPS_PATH='/var/www/'
 APP_DEFAULT_PATH=os.path.join(APPS_PATH, 'foodsoft')
